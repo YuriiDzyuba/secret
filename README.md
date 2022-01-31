@@ -1,3 +1,8 @@
+## clone repo
+
+```bash
+$ git clone https://github.com/YuriiDzyuba/secret.git
+```
 
 
 ```bash
