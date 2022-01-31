@@ -1,11 +1,14 @@
 
+
+```bash
+$ cd secret
+```
+
 ## Installation
 
 ```bash
 $ npm install
 ```
-
-## Running the app
 
 # run app
 ```bash
