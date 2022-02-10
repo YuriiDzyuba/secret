@@ -33,7 +33,7 @@ jobs:
             # Change directory
             cd app
             # Clone repo 
-            git clone git@github.com:YuriiDzyuba/secret.git
+            git clone https://github.com/YuriiDzyuba/secret.git
             # run docker- compose 
             docker-compose up --build
            
