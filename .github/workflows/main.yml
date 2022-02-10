@@ -34,6 +34,6 @@ jobs:
             cd app
             # Clone repo 
             git clone git@github.com:YuriiDzyuba/secret.git
-            # run docker-compose 
+            # run docker- compose 
             docker-compose up --build
            
