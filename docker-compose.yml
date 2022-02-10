@@ -7,17 +7,16 @@ services:
     restart: unless-stopped
     volumes:
       - ./api/src:/app/src
-    env_file:
-      - ./api/.env
     depends_on:
       - postgres-auth
 
   postgres-auth:
     image: postgres:13.4
     environment:
+      POSTGRES_USER: auth_user
+      POSTGRES_PASSWORD: 8848
+      POSTGRES_DB: users
       PGDATA: /var/lib/postgresql/data/pgdata
-    env_file:
-      - ./postgres/.env
     volumes:
       - .:/var/lib/postgresql/data
     ports:
@@ -30,4 +29,5 @@ services:
     volumes:
       - ./nginx/nginx.conf.prod:/etc/nginx/conf.d/nginx.conf
     depends_on:
-      - auth-api
+      - api
+
