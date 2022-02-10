@@ -32,4 +32,10 @@ export class ParticipantController {
     return this.participantService.shuffle();
   }
 
+  @ApiOperation( {summary: 'delete shuffled participants'})
+  @Delete('delete')
+  deleteShuffledParticipants(): Promise<void> {
+    return this.participantService.deleteShuffledParticipants();
+  }
+
 }

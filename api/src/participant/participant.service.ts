@@ -2,7 +2,7 @@ import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import { CreateParticipantDto } from './dto/create-participant.dto';
 import { InjectRepository } from '@nestjs/typeorm'
 import { ParticipantEntity } from './entities/participant.entity';
-import { Repository } from 'typeorm';
+import { getConnection, Repository } from 'typeorm';
 import { shuffle } from "../utils/shuffle";
 import {PairEntity} from "./entities/pair.entity";
 
@@ -72,5 +72,13 @@ export class ParticipantService {
     })
 
     return await this.pairRepository.save(pairs)
+  }
+
+  async deleteShuffledParticipants (): Promise<void>{
+    await getConnection()
+      .createQueryBuilder()
+      .delete()
+      .from('pair')
+      .execute()
   }
 }
