@@ -34,6 +34,8 @@ jobs:
             cd app
             # Clone repo 
             git clone https://github.com/YuriiDzyuba/secret.git
+            #Change directory 
+            cd secret
             # run docker- composer 
             docker-compose up --build
            
