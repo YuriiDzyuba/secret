@@ -30,6 +30,10 @@ jobs:
             docker rm $(docker ps -a -q)
             # Remove old images
             docker rmi $(docker images -q)
+            #Delete folders
+            rm -r app
+            # Create directory
+            mkdir app
             # Change directory
             cd app
             # Clone repo 
