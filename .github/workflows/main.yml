@@ -15,9 +15,9 @@ jobs:
       - name: Deploy to Digital Ocean droplet via SSH action
         uses: appleboy/ssh-action@v0.1.3
         with:
-          host: ${{ secrets.HOST }}
+          host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSHKEY }}
+          key: ${{ secrets.SSH_KEY }}
           script: |
             # Set env variables
             export POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
@@ -25,14 +25,15 @@ jobs:
             export SECRET_KEY=${{ secrets.SECRET_KEY }}
             
             # Stop running container
-            docker stop $(echo $CONTAINER_NAME)
+            docker kill $(docker ps -q)
             # Remove old container
-            docker rm $(echo $CONTAINER_NAME)
-            # Run a new container from a new image
-            docker run --env-file $(echo $ENV_FILE_PATH) \
-            -v $(echo $LOGS_PATH):/logs -d \
-            --restart always \
-            --publish 8000:8000 \
-            --name $(echo $CONTAINER_NAME) \
-            --link=jewerly-db:db \
-            $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
+            docker rm $(docker ps -a -q)
+            # Remove old images
+            docker rmi $(docker images -q)
+            # Change directory
+            cd app
+            # Clone repo 
+            git clone git@github.com:YuriiDzyuba/secret.git
+            # run app
+            docker-compose up --build
+           
