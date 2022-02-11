@@ -3,7 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateParticipantDto {
     @ApiProperty({
-        example: 'Ivan',
+        example: 'Vanusha',
         description: 'new participant name',
     })
     @MinLength(2)
@@ -12,7 +12,7 @@ export class CreateParticipantDto {
     readonly name: string;
 
     @ApiProperty({
-        example: 'Ivanov',
+        example: 'Ivanovish',
         description: 'new participant surname',
     })
     @MinLength(2)
@@ -21,7 +21,7 @@ export class CreateParticipantDto {
     readonly surname: string;
 
     @ApiProperty({
-        example: '["cat","bike","PS"]',
+        example: '["cat","bike","PS","comp"]',
         description: 'array of gifts',
     })
     @IsArray()
