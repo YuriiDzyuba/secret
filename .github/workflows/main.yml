@@ -41,5 +41,5 @@ jobs:
             #Change directory 
             cd secret
             # run docker-composer 
-            docker-compose up --build
+            docker-compose up --build -d
            
