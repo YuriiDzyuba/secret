@@ -4,6 +4,6 @@ server {
   server_name 104.248.166.129;
 
   location /api {
-    proxy_pass http://auth-api:5000/api;
+    proxy_pass http://api:5000/api;
   }
 }
